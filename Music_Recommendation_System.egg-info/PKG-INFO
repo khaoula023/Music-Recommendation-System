@@ -3,3 +3,10 @@ Name: Music-Recommendation-System
 Version: 0.0.1
 Author: Khaoula
 Author-email: khaouladahimi02@gmail.com
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: seaborn
+Requires-Dist: matplotlib
+Requires-Dist: scikit-learn
+Requires-Dist: flask
+Requires-Dist: plotly

@@ -9,3 +9,7 @@ src/__init__.py
 src/exception.py
 src/logger.py
 src/utils.py
+src/components/Data_ingestion.py
+src/components/Data_transformation.py
+src/components/__init__.py
+src/components/model.py
