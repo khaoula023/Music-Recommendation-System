@@ -5,6 +5,7 @@ from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import logging
+from src.components.Data_transformation import DataTransformation
 
 @dataclass
 class DataIngestionConfig:
@@ -32,5 +33,8 @@ class DataIngestion:
 if __name__ == "__main__":
     obj = DataIngestion()
     data = obj.initiate_data_ingestion()
+    transformer = DataTransformation()
+    transformed_data = transformer.transform(data)
+    print(transformed_data.shape)
     
     
