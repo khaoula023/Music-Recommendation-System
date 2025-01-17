@@ -6,7 +6,8 @@ from dataclasses import dataclass
 from src.exception import CustomException
 from src.logger import logging
 from src.components.Data_transformation import DataTransformation
-
+from src.components.model import ModelTrainer
+os.environ["LOKY_MAX_CPU_COUNT"] = "4"
 @dataclass
 class DataIngestionConfig:
     data_path = os.path.join('artifacts', 'data.csv')
@@ -35,6 +36,7 @@ if __name__ == "__main__":
     data = obj.initiate_data_ingestion()
     transformer = DataTransformation()
     transformed_data = transformer.transform(data)
-    print(transformed_data.shape)
+    model = ModelTrainer()
+    print(model.initiate_model_trainer(transformed_data))
     
     
