@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Music Recommendation System</title>
+  </head>
+  <body>
+    <h1 class="center">Music Recommendation System</h1>
+    <div class="form-container">
+      <label for="song-select" class="form-label"
+        >Choose your favorite song:</label
+      >
+      <select id="song-select" class="form-control" name="song" required>
+        <option class="placeholder" selected disabled value="">
+          Select a song
+        </option>
+        <option value="song A">Song A</option>
+        <option value="song B">Song B</option>
+        <option value="song C">Song C</option>
+        <option value="song D">Song D</option>
+        <option value="song E">Song E</option>
+      </select>
+      <button class="submit-btn" onclick="getRecommendations()">
+        Get Recommendations
+      </button>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <img src="images\card.jpg" />
+        <div class="info">
+          <h5>UNTITLED</h5>
+          <p>Artist</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images\card02.jpg" />
+        <div class="info">
+          <h5>UNTITLED</h5>
+          <p>Artist</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images\card3.jpg" />
+        <div class="info">
+          <h5>UNTITLED</h5>
+          <p>Artist</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images\card4.jpg" />
+        <div class="info">
+          <h5>UNTITLED</h5>
+          <p>Artist</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images\card5.jpg" />
+        <div class="info">
+          <h5>UNTITLED</h5>
+          <p>Artist</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
