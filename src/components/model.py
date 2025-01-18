@@ -14,6 +14,7 @@ os.environ["LOKY_MAX_CPU_COUNT"] = "4"
 @dataclass
 class ModelTrainerConfig():
     model_path = os.path.join('artifacts', 'model.pkl')
+    labeled_data = os.path.join('artifacts', 'labeled_data.csv')
     
 class ModelTrainer():
     def __init__(self):
@@ -41,6 +42,10 @@ class ModelTrainer():
 
             logging.info('Save the model after training')
             save_object(file_path=self.model_trainer_config.model_path, obj=model)
+            
+            logging.info('Save the new data after clustering')
+            save_object(file_path= self.model_trainer_config.labeled_data,
+                        obj= data)
 
             return score
         except Exception as e:
