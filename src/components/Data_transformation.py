@@ -54,7 +54,7 @@ class DataTransformation:
             save_object(file_path= self.data_transformation_config.preprocessor_path,
                         obj= preprocessor)
             
-            return transformed_data
+            return transformed_data, df
       
         except Exception as e:
             raise CustomException(e,sys)

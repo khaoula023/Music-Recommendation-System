@@ -35,8 +35,8 @@ if __name__ == "__main__":
     obj = DataIngestion()
     data = obj.initiate_data_ingestion()
     transformer = DataTransformation()
-    transformed_data = transformer.transform(data)
+    transformed_data, data = transformer.transform(data)
     model = ModelTrainer()
-    print(model.initiate_model_trainer(transformed_data))
+    print(model.initiate_model_trainer(transformed_data,data))
     
     
