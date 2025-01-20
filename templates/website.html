@@ -3,65 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="static/style.css" />
     <title>Music Recommendation System</title>
   </head>
   <body>
     <h1 class="center">Music Recommendation System</h1>
-    <div class="form-container">
-      <label for="song-select" class="form-label"
-        >Choose your favorite song:</label
-      >
+    <form method="POST" action="/getRecommendations" class="form-container">
+      <label for="song-select" class="form-label">Choose your favorite song:</label>
       <select id="song-select" class="form-control" name="song" required>
         <option class="placeholder" selected disabled value="">
           Select a song
         </option>
-        <option value="song A">Song A</option>
-        <option value="song B">Song B</option>
-        <option value="song C">Song C</option>
-        <option value="song D">Song D</option>
-        <option value="song E">Song E</option>
+        <option value="Clancy Lowered the Boom" {% if request.form.get('song') == 'Clancy Lowered the Boom' or song_name == 'Clancy Lowered the Boom' %} selected {% endif %}>Clancy Lowered the Boom</option>
+        <option value="When Irish Eyes Are Smiling" {% if request.form.get('song') == 'When Irish Eyes Are Smiling' or song_name == 'When Irish Eyes Are Smiling' %} selected {% endif %}>When Irish Eyes Are Smiling</option>
+        <option value="Je Suis Toujours La" {% if request.form.get('song') == 'Je Suis Toujours La' or song_name == 'Je Suis Toujours La' %} selected {% endif %}>Je Suis Toujours La</option>
+        <option value="Overture" {% if request.form.get('song') == 'Overture' or song_name == 'Overture' %} selected {% endif %}>Overture</option>
+        <option value="Elle Porte Un Nom Charmant" {% if request.form.get('song') == 'Elle Porte Un Nom Charmant' or song_name == 'Elle Porte Un Nom Charmant' %} selected {% endif %}>Elle Porte Un Nom Charmant</option>
+        <option value="Where The River Shannon Flows" {% if request.form.get('song') == 'Where The River Shannon Flows' or song_name == 'Where The River Shannon Flows' %} selected {% endif %}>Where The River Shannon Flows</option>
+        <option value="How Can You Buy Killarny" {% if request.form.get('song') == 'How Can You Buy Killarny' or song_name == 'How Can You Buy Killarny' %} selected {% endif %}>How Can You Buy Killarny</option>
+        <option value="I Don't Need You" {% if request.form.get('song') == "I Don't Need You" or song_name == "I Don't Need You" %} selected {% endif %}>I Don't Need You</option>
+        <option value="Dans Sa Petite Mansarde" {% if request.form.get('song') == 'Dans Sa Petite Mansarde' or song_name == 'Dans Sa Petite Mansarde' %} selected {% endif %}>Dans Sa Petite Mansarde</option>
       </select>
-      <button class="submit-btn" onclick="getRecommendations()">
-        Get Recommendations
-      </button>
-    </div>
+      <button type="submit" class="submit-btn">Get Recommendations</button>
+    </form>
+
     <div class="card-container">
-      <div class="card">
-        <img src="images\card.jpg" />
-        <div class="info">
-          <h5>UNTITLED</h5>
-          <p>Artist</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="images\card02.jpg" />
-        <div class="info">
-          <h5>UNTITLED</h5>
-          <p>Artist</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="images\card3.jpg" />
-        <div class="info">
-          <h5>UNTITLED</h5>
-          <p>Artist</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="images\card4.jpg" />
-        <div class="info">
-          <h5>UNTITLED</h5>
-          <p>Artist</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="images\card5.jpg" />
-        <div class="info">
-          <h5>UNTITLED</h5>
-          <p>Artist</p>
-        </div>
-      </div>
+      {% if recommendations %}
+        {% for song in recommendations %}
+          <div class="card">
+            <img src="{{ song['image_path'] }}" />
+            <div class="info">
+              <h5>{{ song['name'] }}</h5>
+              <p>{{ song['artist'] }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% elif error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
     </div>
   </body>
 </html>

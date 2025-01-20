@@ -50,13 +50,8 @@ class PredictPipeline():
             recommendations = recommendations.sample(min(num_recommendations, len(recommendations)))
 
             logging.info("Recommendations generated successfully.")
-            return recommendations[['name', 'artists']]  
+            return recommendations[['name']]  
         except Exception as e:
             raise CustomException(e, sys)
         
         
-if __name__ == '__main__':
-    obj = PredictPipeline()
-    recommendations = obj.recommend('Shake It Out')
-    print("Recommended Songs:")
-    print(recommendations.to_string(index=False))

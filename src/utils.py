@@ -25,3 +25,10 @@ def save_object(file_path, obj):
     except Exception as e:
         raise CustomException(e, sys)
     
+def convert_to_dict(list1):
+    try: 
+        list2 = [{'image_path': 'static\images\card.jpg'}, {'image_path': 'static\images\card02.jpg'}, {'image_path': 'static\images\card3.jpg'},{'image_path': 'static\images\card4.jpg'},{'image_path': 'static\images\card5.jpg'}]
+        dict = [{**d1, **d2} for d1, d2 in zip(list1, list2)]
+        return dict
+    except Exception as e:
+        raise CustomException(e, sys)
